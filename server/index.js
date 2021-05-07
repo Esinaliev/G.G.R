@@ -56,19 +56,19 @@ const root = {
         return users
     },
     getUser: ({id}) => {
-        return users.find(user=> user.id==id)
+        return users.find(user=> user.id == id)
     },
     getAllGames: () => {
         return games
     },
     getGame: ({code}) => {
-        return games.find(game => game.code ==code)
+        return games.find(game => game.code == code)
     },
     getAllGenres: () => {
         return genres
     },
     getGenre: ({code}) => {
-        return genres.find(genre => genre.code ==code)
+        return genres.find(genre => genre.code == code)
     },
 
     createGame: ({input}) => {

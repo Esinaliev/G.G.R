@@ -1,17 +1,4 @@
 const {buildSchema}=require('graphql')
-/*
-Table genre {
-  code int [pk, increment]
-  genre_name varchar [pk, not null]
-}
-
-Table records {
-  id int [pk, increment]
-  user_id int [pk]
-  game_code int [pk]
-  score int
-}
-*/
 const schema = buildSchema(`
 
     type User {
