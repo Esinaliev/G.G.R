@@ -66,5 +66,4 @@ const schema = buildSchema(`
     }
 
 `)
-
 module.exports = schema

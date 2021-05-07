@@ -69,7 +69,7 @@ const root = {
     getAllRecord: () => { return genres },
     getRecord: ({id}) => { 
         const record = records.find(record => record.id == id)
-        return record
+        return record;
     },
 
     createGame: ({input}) => {
