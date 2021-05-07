@@ -17,6 +17,13 @@ const schema = buildSchema(`
         code: Int
         title: String
     }
+    type Record {
+        id: ID
+        user_id: User
+        game_code: Game
+        score: Int
+        time: String
+    }
 
     input UserInput {
         logIn: String!
@@ -25,13 +32,19 @@ const schema = buildSchema(`
         avatar: String
     }
     input GameInput {
-        code: Int
         title: String!
         genres: [GenreInput]
     }
     input GenreInput {
-        code: Int
-        title: String!
+        code: ID!
+        title: String
+    }
+
+    input RecordInput {
+        user_id: User!
+        game_code: Game!
+        score: Int
+        time: String
     }
 
     type Query {
@@ -41,12 +54,15 @@ const schema = buildSchema(`
         getGame(code: Int): Game
         getAllGenres: [Genre]
         getGenre(code: Int): Genre
+        getAllRecords: [Record]
+        getRecord(id: ID): Record
     }
     
     type Mutation {
         createUser(input: UserInput): User
         createGame(input: GameInput): Game
         createGenre(input: GenreInput): Genre
+        createRecord(input: RecordInput): Record
     }
 
 `)

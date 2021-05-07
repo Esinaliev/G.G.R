@@ -2,9 +2,10 @@ const express = require('express')
 const {graphqlHTTP} =require('express-graphql')
 const cors = require('cors')
 const schema = require('./schema')
-const users = []
-const games = []
-const genres = []
+const users = [{id: "fe78de24-d0ec-4bdc-861d-fccc2cc28bbc",logIn: "GranullBoy",password: "qwerty123",nickname: "Arsen",avatar: null}]
+const games = [{ code: 0, title: "snake", genres: [{code: 1, title: "8-Bit"}]}]
+const genres = [{code:1,title:"8-Bit"}]
+//const record = []
 
 const app = express()
 app.use(cors())
@@ -34,14 +35,15 @@ const createGame = (input) => {
     const genresCode = []
     if(input.genres!=null){
         input.genres.forEach(e => {
-            if(genres.find(genre => genre.id == e.id)!=null){
-                genresCode.push(e)
+            if(genres.find(genre => genre.code == e.code)==null){
+                genresCode.push(genres.find(genre => genre.id == e.id))
             }
         });
+        input.genres=genresCode;
     }
     
     return {
-        code,genresCode, ...input
+        code, ...input
     }
 }
 const createGenre = (input) => {
@@ -50,25 +52,24 @@ const createGenre = (input) => {
         code, ...input
     }
 }
+const createRecord = (input) => {
+    const id = genres.length
+    return {
+        id, ...input
+    }
+}
 
 const root = {
-    getAllUsers: () => {
-        return users
-    },
-    getUser: ({id}) => {
-        return users.find(user=> user.id == id)
-    },
-    getAllGames: () => {
-        return games
-    },
-    getGame: ({code}) => {
-        return games.find(game => game.code == code)
-    },
-    getAllGenres: () => {
-        return genres
-    },
-    getGenre: ({code}) => {
-        return genres.find(genre => genre.code == code)
+    getAllUsers: () => { return users },
+    getUser: ({id}) => { return users.find(user=> user.id == id) },
+    getAllGames: () => { return games },
+    getGame: ({code}) => { return games.find(game => game.code == code) },
+    getAllGenres: () => { return genres },
+    getGenre: ({code}) => { return genres.find(genre => genre.code == code) },
+    getAllRecord: () => { return genres },
+    getRecord: ({id}) => { 
+        const record = records.find(record => record.id == id)
+        record
     },
 
     createGame: ({input}) => {
