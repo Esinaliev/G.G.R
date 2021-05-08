@@ -86,6 +86,11 @@ const root = {
         const user = createUser(input)
         users.push(user)
         return user
+    },
+    createRecord: ({input}) => {
+        const user = createUser(input)
+        users.push(user)
+        return user
     }
 }
 

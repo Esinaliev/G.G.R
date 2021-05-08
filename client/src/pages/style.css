@@ -1,0 +1,26 @@
+html,body,.root{
+    height: 100%;
+    width: 100%;
+}
+html,body{
+    margin: 0;
+    margin-top: -4px;
+}
+.top {
+    height: 15%;
+    background-color: lightsalmon;
+}
+.top a {
+    margin: 10px;
+}
+h1{
+    margin: 8px;
+}
+.right{
+float: right;
+height: 85%;
+width: 10%;
+}
+.singup *{
+    align-self: center;
+}

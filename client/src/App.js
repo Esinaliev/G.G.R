@@ -1,11 +1,14 @@
 import React from 'react';
-import './App.css'
+import { BrowserRouter as Router} from 'react-router-dom'
+import {useRoutes} from './routes'
+import './pages/style.css'
 
-const App = () => {
+function App() {
+  const router = useRoutes(false)
   return (
-    <div>
-      <h1>Home</h1>
-    </div>
+    <Router>
+        {router}
+    </Router>
   )
 }
 
