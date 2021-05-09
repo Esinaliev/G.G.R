@@ -1,9 +1,6 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import {HomePage} from './pages/HomePage'
-import {GamesPage} from './pages/GamesPage'
-import {GamePage} from './pages/GamePage'
-import {LoginPage} from './pages/SingUp'
 
 export const useRoutes = isAuthenticated => {
     if(isAuthenticated){

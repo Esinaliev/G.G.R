@@ -1,23 +1,38 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router} from 'react-router-dom'
 import './style.css'
 import {useQuery} from "@apollo/client";
 import {GET_ALL_GAMES, GET_ONE_GAME} from "./graphql/Query/game";
-import {GamePage} from "./GamePage"
 
-export const GamesPage = () => {
+export const GamePage = () => {
+    var url = window.location.href.split('/')[4];
     const {data, loading, error} = useQuery(GET_ALL_GAMES)
+    const {data:oneGame, loading: loadingOneGame} = useQuery(GET_ONE_GAME, {
+        variables: {
+            id: parseInt(url)
+        }
+    })
     const [game, setGame] = useState([])
     
     React.useEffect(() => {
         if (!loading) {
+            console.log(data)
             data.getAllGames.forEach(e => {
                 game.push(e)
             });
-            console.log(game)
+            GetGame();
         }
     }, [data])
-    function GetAllGame(){
 
+    function GetGame(){
+        const OneGame=null
+        //=game[0]
+        console.log(OneGame)
+        if(!OneGame){
+            return <h1>404 Игра не найдена</h1>
+        }
+        //var Game = require(OneGame.path);
+        //var Jobs = require('./Games/Snake');   
     }
     
     if (loading) {
@@ -41,11 +56,8 @@ export const GamesPage = () => {
                     </ul>
                 </div>
             </div>
-            <div className="catalog">
-                {game.forEach(e => {
-                    <div>{e.title}</div>
-                })}
-            </div>
+            <Router>
+            </Router>
         </div>
     )
 }

@@ -3,9 +3,9 @@ const {graphqlHTTP} =require('express-graphql')
 const cors = require('cors')
 const schema = require('./schema')
 const users = [{id: "fe78de24-d0ec-4bdc-861d-fccc2cc28bbc",logIn: "GranullBoy",password: "qwerty123",nickname: "Arsen",avatar: null}]
-const games = [{ code: 0, title: "snake", genres: [{code: 1, title: "8-Bit"}]}]
+const games = [{ code: 0, title: "snake", path:"./Games/Snake", genres: [{code: 1, title: "8-Bit"}]}]
 const genres = [{code:1,title:"8-Bit"}]
-//const record = []
+const records = [{id: "1", user_id: {id: "fe78de24-d0ec-4bdc-861d-fccc2cc28bbc", logIn: "GranullBoy", nickname: "Arsen", password: "qwerty123", avatar: null}, game_code: {code: 0, title: "snake", path:"./Games/Snake", genres: [{title: "8-Bit", code: 1}]}, score: 100, time: null}]
 
 const app = express()
 app.use(cors())
@@ -23,11 +23,18 @@ function createUUID() {
     var uuid = s.join("");
     return uuid;
 }
+function getGame(code){
+    return games.find(game => game.code == code)
+}
+function getUser(id){
+    return users.find(user=> user.id == id)
+}
 
 const createUser = (input) => {
     const id = createUUID()
+    const nickname = input.login
     return {
-        id, ...input
+        id, nickname, ...input
     }
 }
 const createGame = (input) => {
@@ -54,10 +61,13 @@ const createGenre = (input) => {
 }
 const createRecord = (input) => {
     const id = genres.length
+    input.user_id = getUser(input.user_id)
+    input.game_code = getGame(input.game_code)
     return {
         id, ...input
     }
 }
+
 
 const root = {
     getAllUsers: () => { return users },
@@ -66,10 +76,9 @@ const root = {
     getGame: ({code}) => { return games.find(game => game.code == code) },
     getAllGenres: () => { return genres },
     getGenre: ({code}) => { return genres.find(genre => genre.code == code) },
-    getAllRecord: () => { return genres },
+    getAllRecords: () => { return records },
     getRecord: ({id}) => { 
-        const record = records.find(record => record.id == id)
-        return record;
+        return records.find(record => record.id == id)
     },
 
     createGame: ({input}) => {
@@ -88,9 +97,9 @@ const root = {
         return user
     },
     createRecord: ({input}) => {
-        const user = createUser(input)
-        users.push(user)
-        return user
+        const record = createRecord(input)
+        records.push(record)
+        return record
     }
 }
 

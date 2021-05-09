@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import { useHttp } from '../hooks/http.hook'
 import './style.css'
 
 export const LoginPage = () => {
+    const {loading, error, request} = useHttp()
     const [form,setForm] =useState({
         login: '',password: ''
     })
@@ -10,44 +12,28 @@ export const LoginPage = () => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
 
-    
+    const registerHandler =async () => {
+        try {
+            const data = await request('/api')
+        } catch (e) { }
+    }
 
     return (
-        <div className="singup">
-            <div className="row">
-                <div className="col s6 offset-s3">
-                    <h1>Регистрация</h1>
-                    <div className="card blue darken-1">
-                        <div className="card-content while-text">
-                            <span className="crad-title">Авторизация</span>
-                            <div>
-                                <div className="input-fiend">
-                                    <input
-                                    placeholder="Введите login"
-                                    id="login"
-                                    type="text"
-                                    name="login"
-                                    onChange={changeHandler}
-                                    />
-                                    <label htmlFor="login">Login</label>
-                                    </div>
-                                <div className="input-fiend">
-                                    <input
-                                    placeholder="Введите пароль"
-                                    id="password"
-                                    type="text"
-                                    name="password"
-                                    onChange={changeHandler}
-                                    />
-                                    <label htmlFor="email">Пароль</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card-action">
-                            <button>Войти</button>
-                            <button>Регистрация</button>
-                        </div>
-                    </div>
+        <div>
+            <div className="top">
+                <div className="h1">Log In</div>
+                <div className="menu-link">
+                    <ul>
+                        <li>
+                            <a href='./'>Home</a>
+                        </li>
+                        <li>
+                    <a href='./games'>Games</a>
+                        </li>
+                        <li className="active">
+                    <a href='./login'>Log In</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

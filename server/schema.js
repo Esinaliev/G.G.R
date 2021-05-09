@@ -11,6 +11,7 @@ const schema = buildSchema(`
     type Game {
         code: Int
         title: String
+        path: String
         genres: [Genre]
     }
     type Genre {
@@ -28,8 +29,6 @@ const schema = buildSchema(`
     input UserInput {
         logIn: String!
         password: String!
-        nickname: String
-        avatar: String
     }
     input GameInput {
         title: String!
@@ -41,8 +40,8 @@ const schema = buildSchema(`
     }
 
     input RecordInput {
-        user_id: User!
-        game_code: Game!
+        user_id: ID!
+        game_code: Int!
         score: Int
         time: String
     }
