@@ -16,9 +16,6 @@ export const GamesPage = () => {
             console.log(game)
         }
     }, [data])
-    function GetAllGame(){
-
-    }
     
     if (loading) {
         return <h1>Loading...</h1>

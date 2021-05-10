@@ -23,19 +23,14 @@ function createUUID() {
     var uuid = s.join("");
     return uuid;
 }
-function getGame(code){
-    return games.find(game => game.code == code)
-}
-function getUser(id){
-    return users.find(user=> user.id == id)
-}
+
+function getGame(code){ return games.find(game => game.code == code) }
+function getUser(id){ return users.find(user=> user.id == id) }
 
 const createUser = (input) => {
     const id = createUUID()
     const nickname = input.login
-    return {
-        id, nickname, ...input
-    }
+    return { id, nickname, ...input } 
 }
 const createGame = (input) => {
     const code = games.length
@@ -48,24 +43,17 @@ const createGame = (input) => {
         });
         input.genres=genresCode;
     }
-    
-    return {
-        code, ...input
-    }
+    return { code, ...input }
 }
 const createGenre = (input) => {
     const code = genres.length
-    return {
-        code, ...input
-    }
+    return { code, ...input }
 }
 const createRecord = (input) => {
     const id = genres.length
     input.user_id = getUser(input.user_id)
     input.game_code = getGame(input.game_code)
-    return {
-        id, ...input
-    }
+    return { id, ...input }
 }
 
 
@@ -77,9 +65,7 @@ const root = {
     getAllGenres: () => { return genres },
     getGenre: ({code}) => { return genres.find(genre => genre.code == code) },
     getAllRecords: () => { return records },
-    getRecord: ({id}) => { 
-        return records.find(record => record.id == id)
-    },
+    getRecord: ({id}) => {  return records.find(record => record.id == id) },
 
     createGame: ({input}) => {
         const game = createGame(input)

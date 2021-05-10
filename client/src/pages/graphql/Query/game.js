@@ -3,7 +3,7 @@ import {gql} from '@apollo/client'
 export const GET_ALL_GAMES = gql`
     query {
         getAllGames {
-            title,path,genres{title}
+            code,title,path,genres{title}
         }
     }
 
