@@ -1,0 +1,39 @@
+type Query {
+  users: [User!]!
+  user(id: Int!): User
+  games: [Game!]!
+  game(id: Int!): Game
+  gameInfos: [Gameinfo!]!
+  gameInfo(id: Int!): Gameinfo
+}
+
+type Mutation {
+  createUser(login: String, password: String): User!
+  deleteUser(id: Int): User!
+  updateUser(id: Int, login: String, password: String, nickname: String, avatar: String): User!
+
+  createGame(title: String): Game!
+  deleteGame(id: Int): Game!
+  updateGame(id: Int, title: String): Game!
+
+  createGameInfo( game_id: Int, description: String): Gameinfo!
+  deleteGameInfo(id: Int): Gameinfo!
+  updateGameInfo(id: Int, game_id: Int, description: String): Gameinfo!
+}
+
+type User {
+  id: Int!,
+  login: String,
+  password: String,
+  nickname: String,
+  avatar: String
+}
+type Game {
+  id: Int!,
+  title: String
+}
+type Gameinfo {
+  id: Int!,
+  game_id: Int!,
+  description: String
+}

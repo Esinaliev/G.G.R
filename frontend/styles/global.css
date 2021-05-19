@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+body{
+    background-color: #fceac9;
+}
+
+.login{
+    background-color: #fceac9;
+    padding: 25px;
+    font-size: 40px;
+    text-align: center;
+    vertical-align: middle;
+    height: 5500px;
+    width: auto;
+}
+.login input, .login button{
+    font-size: 24px;
+}
+.notFound h2{
+    padding: 10px;
+    /*text-align: center;*/
+    font-size: 50px;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-left: 1px solid #7e2505;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.img {
+  background: #f1f1f1;
+  padding: 10px;
+  border: 1px solid #7e2505;
+  height: 150px;
+}

@@ -1,0 +1,25 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:../Database/db.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+model Users {
+  id  Int    @id @default(autoincrement())
+  login  String
+  password  String
+  nickname  String
+}
+model Games {
+  id  Int    @id @default(autoincrement())
+  title String
+}
+model Gameinfo {
+  id  Int    @id @default(autoincrement())
+  game_id Int
+  description String
+}

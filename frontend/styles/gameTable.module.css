@@ -1,0 +1,18 @@
+.gameTable ul{
+    margin: 5px;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid #7e2505;
+    /*background-color: #b0c4de/*#f08080;*/
+}
+.gameTable li{
+  color: #a1340c;
+  padding: 2px;
+  display: block;
+  border: 1px solid #7e2505;
+  float: left;
+  text-align: center;
+}
+.gameTable img{
+    width: 100px;
+}

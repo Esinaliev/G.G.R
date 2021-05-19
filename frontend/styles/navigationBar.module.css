@@ -1,0 +1,29 @@
+.menu_link {
+  height: 63px;
+  width: 100%;
+  background: #FFD7A7;
+  }
+.menu_link ul {
+    float: right;
+    padding: 0;
+    background: #FFD7A7;
+  }
+  .menu_link li {
+    display: inline-block;
+  }
+  .menu_link a {
+    font-size: 20px;
+    padding: 1em;
+    display: block;
+    color: #9B4222;
+    border-left: 1px solid #FFAB51;
+    background: rgba(255, 171, 81, .3);
+  }
+  .menu_link h1 {
+    font-size: 44px;
+    padding: 5px;
+    padding-left: 7px;
+    color: #9B4222;
+    vertical-align: middle;
+  }
+  .menu_link a:hover {background: #FFAB51}
